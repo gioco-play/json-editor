@@ -1,0 +1,33 @@
+{
+    "name": "gioco-plus/json-editor",
+    "description": "JSON Editor for Laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension"],
+    "homepage": "https://github.com/jxlwqq/json-editor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jxlwqq",
+            "email": "jxlwqq@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "GiocoPlus\\JsonEditor\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "GiocoPlus\\JsonEditor\\JsonEditorServiceProvider"
+            ]
+
+        }
+    }
+}
