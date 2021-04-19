@@ -7,7 +7,7 @@
 
         @include('admin::form.error')
 
-        <div id="{{$id}}" style="width: 100%; height: {!! $attributes !!};"></div>
+        <div id="{{$id}}" style="width: 100%; {!! $attributes !!}"></div>
 
         <input type="hidden" id="{{$id}}_input" name="{{$name}}" value="{{ old($column, $value) }}" />
         @include('admin::form.help-block')
