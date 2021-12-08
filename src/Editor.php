@@ -3,6 +3,7 @@
 namespace GiocoPlus\JsonEditor;
 
 use GiocoPlus\Admin\Form\Field;
+use GiocoPlus\Admin\Form\NestedForm;
 
 class Editor extends Field
 {
@@ -37,20 +38,23 @@ class Editor extends Field
             $options = "{}";
         }
 
+        $name = $this->variables()["name"];
+        $defaultKey = NestedForm::DEFAULT_KEY_NAME;
         $this->script = <<<EOT
 // create the editor
-var container = document.getElementById("{$this->id}");
+var {$name}="{$name}".replace(/{$defaultKey}/g, window.index);
+var container = document.getElementById("{$name}");
 var options = {$options};
-window['editor_{$this->id}'] = new JSONEditor(container, options);
+window['editor_'+"{$name}"] = new JSONEditor(container, options);
 
 // set json
 var json = {$json};
-window['editor_{$this->id}'].set(json);
+window['editor_'+"{$name}"].set(json);
 
 // get json
 $('button[type="submit"]').click(function() {
-var json = window['editor_{$this->id}'].get()
-$('input[id={$this->id}_input]').val(JSON.stringify(json))
+var json = window['editor_'+"{$name}"].get()
+$('input[id='+"{$name}"+'_input]').val(JSON.stringify(json))
 });
 EOT;
 
